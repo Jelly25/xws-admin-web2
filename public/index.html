@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>logo.svg">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+		<link rel="stylesheet" href="static/css/preload.css">
+		<% for (var i in htmlWebpackPlugin.options.cdnLists && htmlWebpackPlugin.options.cdnLists.css) { %>
+      <link href="<%= htmlWebpackPlugin.options.cdnLists.css[i] %>" rel="preload" as="style" />
+      <link href="<%= htmlWebpackPlugin.options.cdnLists.css[i] %>" rel="stylesheet" />
+    <% } %>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app">
+			<!-- 预加载页面 -->
+			<div class="preload">
+				<div class="container">
+					<div class="title">xws-admin-web2</div>
+					<div class="loading-box">
+						<div class="loading-spinner">
+							<svg class="circular" viewBox="25 25 50 50">
+								<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="6" stroke-miterlimit="10"/>
+							</svg>
+						</div>
+						<div class="loading-text">正在加载中...</div>
+					</div>
+					<div class="sub-title">初次加载资源可能需要较多时间,请耐心等待</div>
+				</div>
+				<div class="footer">
+					<a href="https://www.xwsbj.com/home" target="_blank"> © 2022 北京细无声科技有限公司 | 备案号：京ICP备20012507号-1 </a>
+				</div>
+			</div>
+		</div>
+		<% for (var i in htmlWebpackPlugin.options.cdnLists && htmlWebpackPlugin.options.cdnLists.js) { %>
+      <script src="<%= htmlWebpackPlugin.options.cdnLists.js[i] %>"></script>
+    <% } %>
+  </body>
+</html>
